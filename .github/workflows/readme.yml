@@ -1,0 +1,24 @@
+name: Update README.md
+on:
+  release:
+    types: [published]
+jobs:
+  build:
+    name: Update README.md
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: Update README.md
+        run : |
+          wget https://raw.githubusercontent.com/ClassicPress/ClassicPress/develop/src/wp-content/themes/the-classicpress-theme/README.md
+          ls
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: 'Update README-md ${date}'
