@@ -15,7 +15,7 @@ jobs:
           git config user.email "<>"
       - name: Update README.md
         run : |
-          wget https://raw.githubusercontent.com/ClassicPress/ClassicPress/develop/src/wp-content/themes/the-classicpress-theme/README.md
+          wget -O README.md https://raw.githubusercontent.com/ClassicPress/ClassicPress/develop/src/wp-content/themes/the-classicpress-theme/README.md
           ls
       - name: Commit & Push changes
         uses: actions-js/push@master
