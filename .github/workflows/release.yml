@@ -20,8 +20,7 @@ jobs:
       - name: Create artifact
         run : |
           cd src/wp-content/themes/
-          zip ../../../${{ github.event.repository.name }}-${{ github.ref_name }}.zip the-classicpress-theme/*
-          ls
+          zip -r ../../../${{ github.event.repository.name }}-${{ github.ref_name }}.zip the-classicpress-theme/*
           ls ../../../
       - name: Upload artifact
         uses: actions/upload-artifact@v4
