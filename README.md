@@ -1,7 +1,4 @@
-# The ClassicPress Theme
-
-The ClassicPress Theme is the default ClassicPress theme and is based on the theme used on the ClassicPress website at https://www.classicpress.net. The ClassicPress Theme is designed to be used in three ways:
-- as is, with customizations made using the Additional CSS box in the customizer and/or via plugins;
+ using the Additional CSS box in the customizer and/or via plugins;
 - as a starter theme, where you customize any of the code as you wish, provided that you also rename the theme and the directory in which it resides so that it does not get accidentally overwritten; or
 - as a parent theme, which you customize by creating a child theme.
 
