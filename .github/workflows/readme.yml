@@ -21,4 +21,4 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          message: 'Update README-md ${date}'
+          message: 'Update README-md'
