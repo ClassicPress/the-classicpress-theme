@@ -17,9 +17,11 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
-      - name: Create artifact
+      - name: Create artifact and bring last commit
+        id: last-commit
         run : |
           cd src/wp-content/themes/
+          ( echo -n "LAST_UPSTREAM_COMMIT=\""; git log -1 -- the-classicpress-theme | grep -E '\(\#[0-9]+\)' | tr -d '\n' ; echo "\""; ) >> $GITHUB_OUTPUT
           zip -r ../../../${{ github.event.repository.name }}-${{ github.ref_name }}.zip the-classicpress-theme/*
           ls ../../../
       - name: Upload artifact
@@ -33,3 +35,10 @@ jobs:
           args: ${{ github.event.repository.name }}-${{ github.ref_name }}.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload
+        uses: djn24/add-comment-to-release@v1
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          comment: |-
+            Last commit:
+            ${{ steps.last-commit.outputs.LAST_UPSTREAM_COMMIT }}
